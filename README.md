@@ -5,8 +5,10 @@ Send Reddit Notification to subscribed User
 
 ![](notification.jpg) 
 
+# User recieve below Email 
+![](Template.png)
 
-#Resources 
+# Resources 
 
 - Create User Account
 ```java
