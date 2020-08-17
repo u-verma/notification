@@ -35,6 +35,14 @@ class UserProfileRepository(private val dslContext: DSLContext) {
                 .fetchOptional()
     }
 
+    fun updateLastEmailSentTs(userList: List<String>) {
+        dslContext
+                .update(USER_PROFILE)
+                .set(USER_PROFILE.LAST_EMAIL_SENT_TS_UTC,
+                        OffsetDateTime.now(ZoneOffset.UTC))
+                .where(USER_PROFILE.USER_ID.`in`(userList))
+    }
+
     fun getUsersForSchedulingEmail(): List<String> {
         return dslContext
                 .select(USER_PROFILE.USER_ID)
