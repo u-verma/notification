@@ -41,7 +41,7 @@ class EmailServiceImpl(
         val emailMetaDetaList = mutableListOf<EmailMetaData>()
         userChanelMapping.mapValues { entry: Map.Entry<UserPojo, MutableList<ChannelId>> ->
             val from = "er.umeshverma@gmail.com"
-            val to = entry.key.emailId
+            val to = entry.key.emailId.value
             val subject = "Good Morning News"
             var content: Content? = null
             entry.value.forEach {
