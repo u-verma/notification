@@ -101,15 +101,3 @@ private fun getUpdatedNotificationModel(userProfile: UserProfile,
                 userProfile.lastEmailSentTsUtc
         )
 
-/*
-
-val response = emailClient.sendHTMLEmail(
-        EmailMetaData(
-                "er.umeshverma@gmail.com",
-                "vermaumesh123@gmail.com",
-                "Test Mail from sendgrid",
-                Content("text/html", "Hello, <strong>how are you doing?</strong>")
-        )
-)
-println("the response of send email ${response!!.statusCode}")
-*/

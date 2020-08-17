@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/subscribe")
 class ChannelSubscriptionController(private val channelSubscriptionService: ChannelSubscriptionService) {
-
     private val logger = LoggerFactory.getLogger(ChannelSubscriptionController::class.java)
 
     @PutMapping("/addChannel")

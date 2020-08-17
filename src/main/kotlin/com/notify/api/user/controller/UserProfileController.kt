@@ -4,10 +4,6 @@ import com.notify.api.exception.UserDoesNotExistException
 import com.notify.api.user.domain.UserDetailsResponse
 import com.notify.api.user.domain.UserInformation
 import com.notify.api.user.service.UserProfileService
-import com.notify.client.email.domain.UserPojo
-import com.notify.client.email.repository.UserPreferenceRepository
-import com.notify.client.email.service.EmailService
-import com.notify.common.domain.ChannelId
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/user")
-class UserRegistration(private val userProfileService: UserProfileService,
-                       val emailService: EmailService) {
+class UserRegistration(private val userProfileService: UserProfileService) {
 
     private val logger = LoggerFactory.getLogger(UserRegistration::class.java)
 
@@ -28,16 +23,6 @@ class UserRegistration(private val userProfileService: UserProfileService,
     fun getUserDetail(@PathVariable emailId: String): UserDetailsResponse {
         try {
             return userProfileService.getUserDetail(emailId)
-        } catch (ex: UserDoesNotExistException) {
-            logger.error(ex.message)
-            throw ex
-        }
-    }
-
-    @GetMapping("/fetch")
-    fun getUserMapping(@RequestBody userId: List<String>) {
-        try {
-            emailService.execute(userId)
         } catch (ex: UserDoesNotExistException) {
             logger.error(ex.message)
             throw ex

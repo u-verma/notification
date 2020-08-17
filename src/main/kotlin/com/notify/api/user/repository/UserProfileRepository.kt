@@ -1,7 +1,6 @@
 package com.notify.api.user.repository
 
 import com.notify.api.user.domain.UserProfile
-import com.notify.common.domain.UserId
 import com.notify.databases.model.Tables.USER_PROFILE
 import com.notify.databases.model.tables.records.UserProfileRecord
 import org.jooq.DSLContext
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository
 import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
-import java.util.ArrayList
 import java.util.Optional
 
 @Repository
