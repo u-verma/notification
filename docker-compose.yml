@@ -1,0 +1,13 @@
+version: '3'
+services:
+  postgresql:
+    image: library/postgres:latest
+    container_name: postgres_server
+    environment:
+      POSTGRES_USER: notification
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: notification
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/umesh/server/volumes/notification:/var/lib/postgresql/data

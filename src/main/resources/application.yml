@@ -1,0 +1,47 @@
+#Database Configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notification
+    username: notification
+    password: secret
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 1000
+      maximum-pool-size: 10
+  jooq:
+    sql-dialect: postgres
+  sendgrid:
+    api:
+      key: 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
+  connection:
+    request:
+      timeout:
+        millis: 2000
+    connect:
+      timeout:
+        millis: 1000
+    socket:
+      timeout:
+        millis: 5000
+  pool:
+    max:
+      connection: 10
+      per:
+        route: 5
+    clear:
+      stale:
+        conn:
+          cron:
+            expression: 0 * * * * *
+    stale:
+      conn:
+        clear:
+          time: 1000
+    close:
+      ideal:
+        wait:
+          time: 5000
+server:
+  port: 8081
+user:
+  timezone: UTC
