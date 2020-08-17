@@ -14,7 +14,7 @@ Send Reddit Notification to subscribed User
 ```java
 http://localhost:8081/api/user/create/
 ```
--Request Format
+- Request Format
 ```json
 {
 	"fullName":"Umesh Verma",
@@ -28,7 +28,7 @@ http://localhost:8081/api/user/create/
 ```java
 http://localhost:8081/api/user/fetch/{emailId}
 ```
--Response Format
+- Response Format
 ```json
 {
     "userId": "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
