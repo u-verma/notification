@@ -43,11 +43,12 @@ class EmailServiceImpl(
             val from = "er.umeshverma@gmail.com"
             val to = entry.key.emailId.value
             val subject = "Good Morning News"
-            var content: Content? = null
+            val contentlist = mutableListOf<String>()
+
             entry.value.forEach {
                 redditPostChannelMapping[it]
                         ?.forEach {
-                            content = Content("text/html",
+                            contentlist.add(
                                     """
                                     |<!DOCTYPE html>
                                     |<html>
@@ -56,11 +57,12 @@ class EmailServiceImpl(
                                     |<p> Check the full Post at the below URL</p>
                                     |<a href="${it.postLink}"> Click the URL for more Information</a>
                                     |</body>
-                                    |</html>""".trimMargin("|"))
-
+                                    |</html> """.trimMargin("|") + "\n\n\n")
                         }
-                emailMetaDetaList.add(EmailMetaData(from, to.toString(), subject, content!!))
             }
+            val content = Content("text/html", contentlist
+                    .joinToString { it })
+            emailMetaDetaList.add(EmailMetaData(from, to, subject, content))
         }
         return emailMetaDetaList
     }
