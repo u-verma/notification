@@ -12,6 +12,7 @@ Send Reddit Notification to subscribed User
 # User Api
 
 - Create User Account 
+- URL
 ```URL
 http://localhost:8081/api/user/create/
 ```
@@ -28,7 +29,8 @@ http://localhost:8081/api/user/create/
 # *****************************User API ******************************
 
 # Add User profile 
-GETRequest with Path Param {emailId}
+- GETRequest with Path Param {emailId}
+- URL
 ```URL
 http://localhost:8081/api/user/fetch/{emailId}
 ```
@@ -42,7 +44,7 @@ http://localhost:8081/api/user/fetch/{emailId}
 ```
 
 # Enable Subscription for USER by default it is enabled
-- PUTRequest 
+- URL 
 ```URL
 http://localhost:8081/api/user/enableSubscription
 ```
@@ -54,7 +56,7 @@ http://localhost:8081/api/user/enableSubscription
 ```
 
 # Disable Subscription for USER
-- PUTRequest 
+- URL 
 ```URL
 http://localhost:8081/api/user/disableSubscription
 ```
@@ -69,7 +71,7 @@ http://localhost:8081/api/user/disableSubscription
 
 # Add channels to subscribe for notification by default the notification enabled. Use user API to disable.
 
-- PUTRequest 
+- URL 
 ```URL
 http://localhost:8081/api/subscribe/addChannel
 ```
@@ -84,7 +86,7 @@ http://localhost:8081/api/subscribe/addChannel
 # Update user channel: 
 - This API removes all the old subscribed channels and Add new updated channel.
 
-- PUTRequest 
+- URL 
 ```URL
 http://localhost:8081/api/subscribe/updateChannel
 ```
@@ -101,7 +103,7 @@ http://localhost:8081/api/subscribe/updateChannel
 # send Email notification to user at any time.
 - This API will send the email to list of user provided they have notification enabled and have valid channel subscribed. 
 
-- PUTRequest 
+- URL 
 ```URL
 http://localhost:8081/api/email/send
 ```
