@@ -124,4 +124,23 @@ http://localhost:8081/api/email/send
 ```
 
 # Assumption
-- User always sending correct Channel names during Adding channel No validation done
+
+- Application will be Running in UTC TimeZone
+- I will be having some Api to identify Users Local TimeZone and equivalent UTC time.
+- User always sending correct Channel names during Adding channel, no validation done for checking valid channel names.
+- No failure in third party system (Ahh!!! this is big one)
+
+# Improvement Required in current implementation
+- Proper exception handling.
+- Proper User response during exception in API.
+- Using Circuit breaker during calling third party API.
+- Fault tolerance, handle failure scenario.
+- Retry logic during failure.
+- Transaction handling.
+- Code refactoring. 
+- Proper Logging for debugging.
+- Monitoring and health check dashboard the API.
+- API documentation as code.
+- Executor service to send email in parallel to the USER.
+- Adding Integration test.
+- Add more Unit Test.
