@@ -1,7 +1,5 @@
 package com.notify.api.user.controller
 
-import com.notify.api.subscription.domain.RedditChannelInfo
-import com.notify.api.subscription.service.ChannelSubscriptionService
 import com.notify.api.user.domain.UserDetailsResponse
 import com.notify.api.user.domain.UserInformation
 import com.notify.api.user.service.UserProfileService
