@@ -2,6 +2,20 @@
 
 - Send Reddit Notification Email
 
+# Start application
+
+- run the `docker-compose` available in the root directory. 
+- To start run below command
+```
+docker-compose up -d
+```
+- To Stop run below
+```
+docker-compose down
+```
+- Either you can remove the volume path from `docker-compose` but data will be lost if container is stopped, Or change it to your local path.
+- Then run the application directly from your id Application start at 8081 port.
+
 # High Level Design of Application
 
 ![](notification.jpg) 
