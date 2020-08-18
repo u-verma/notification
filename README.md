@@ -26,7 +26,7 @@ http://localhost:8081/api/user/create/
 }
 ```
 
-# *****************************User API ******************************
+# ******** User API ********
 
 # Add User profile 
 - GETRequest with Path Param {emailId}
@@ -67,7 +67,7 @@ http://localhost:8081/api/user/disableSubscription
 }
 ```
 
-# ***************************** Subscription API for USER: ******************************
+# ******** Subscription API for USER: ********
 
 # Add channels to subscribe for notification by default the notification enabled. Use user API to disable.
 
@@ -98,7 +98,7 @@ http://localhost:8081/api/subscribe/updateChannel
 }
 ```
 
-# ***************************** Email Notification  ******************************
+# ******** Email Notification  ********
 
 # send Email notification to user at any time.
 - This API will send the email to list of user provided they have notification enabled and have valid channel subscribed. 
