@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/user")
-class UserRegistration(private val userProfileService: UserProfileService) {
+class UserProfileController(private val userProfileService: UserProfileService) {
 
-    private val logger = LoggerFactory.getLogger(UserRegistration::class.java)
+    private val logger = LoggerFactory.getLogger(UserProfileController::class.java)
 
     @GetMapping("/fetch/{emailId}")
     fun getUserDetail(@PathVariable emailId: String): UserDetailsResponse {
