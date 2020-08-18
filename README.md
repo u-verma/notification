@@ -14,7 +14,7 @@ docker-compose up -d
 docker-compose down
 ```
 - Either you can remove the volume path from `docker-compose` but data will be lost if container is stopped, Or change it to your local path.
-- Then run the application directly from your id Application start at 8081 port.
+- Then run the application directly from your id. Application starts at 8081 port.
 
 # High Level Design of Application
 
