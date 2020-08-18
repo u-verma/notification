@@ -23,7 +23,8 @@ class UserPreferenceRepository(private val dslContext: DSLContext) {
                 .from(USER_PROFILE)
                 .innerJoin(USER_REDDIT_CHANNEL_MAPPING)
                 .on(USER_REDDIT_CHANNEL_MAPPING.USER_ID.eq(USER_PROFILE.USER_ID))
-                .where(USER_PROFILE.USER_ID.`in`(userList))
+                .where(USER_PROFILE.USER_ID.`in`(userList),
+                        USER_PROFILE.NOTIFICATION_STATUS.eq(true))
                 .fetch().forEach { record ->
                     val userPojo = UserPojo(
                             UserId(UUID.fromString(record.getValue(USER_PROFILE.USER_ID))),

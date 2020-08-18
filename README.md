@@ -9,12 +9,13 @@ Send Reddit Notification to subscribed User
 ![](Template.png)
 
 # Resources 
+# User Api
 
-- Create User Account
-```java
+- Create User Account 
+```URL
 http://localhost:8081/api/user/create/
 ```
-- Request Format
+- PUTRequest
 ```json
 {
 	"fullName":"Umesh Verma",
@@ -24,11 +25,14 @@ http://localhost:8081/api/user/create/
 }
 ```
 
-- Get User Detail
-```java
+# *****************************User API ******************************
+
+# Add User profile 
+GETRequest with Path Param {emailId}
+```URL
 http://localhost:8081/api/user/fetch/{emailId}
 ```
-- Response Format
+- Response Format : Please Note UserId is essential for further API call
 ```json
 {
     "userId": "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
@@ -37,5 +41,79 @@ http://localhost:8081/api/user/fetch/{emailId}
 }
 ```
 
-# Assumption
+# Enable Subscription for USER by default it is enabled
+- PUTRequest 
+```URL
+http://localhost:8081/api/user/enableSubscription
+```
+- PUTRequest
+```json
+{ 
+    "userId": "8b065a35-b305-49e9-b601-2e7ecbe84f4f"
+}
+```
 
+# Disable Subscription for USER
+- PUTRequest 
+```URL
+http://localhost:8081/api/user/disableSubscription
+```
+- PUTRequest
+```json
+{ 
+    "userId": "8b065a35-b305-49e9-b601-2e7ecbe84f4f"
+}
+```
+
+# ***************************** Subscription API for USER: ******************************
+
+# Add channels to subscribe for notification by default the notification enabled. Use user API to disable.
+
+- PUTRequest 
+```URL
+http://localhost:8081/api/subscribe/addChannel
+```
+- PUTRequest
+```json
+{
+    "userId": "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
+    "redditChannel": "technology"
+}
+```
+
+# Update user channel: 
+- This API removes all the old subscribed channels and Add new updated channel.
+
+- PUTRequest 
+```URL
+http://localhost:8081/api/subscribe/updateChannel
+```
+- PUTRequest
+```json
+{
+    "userId": "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
+    "redditChannel": "technology"
+}
+```
+
+# ***************************** Email Notification  ******************************
+
+# send Email notification to user at any time.
+- This API will send the email to list of user provided they have notification enabled and have valid channel subscribed. 
+
+- PUTRequest 
+```URL
+http://localhost:8081/api/email/send
+```
+- PUTRequest
+```json
+  [
+    "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
+    "8b065a35-b305-49e9-b601-2e7ecbe84f4f",
+    "97095a32-h602-47b2-l205-6h0ecke24j4j"
+    ]
+    
+```
+
+# Assumption
+- User always sending correct Channel names during Adding channel No validation done
