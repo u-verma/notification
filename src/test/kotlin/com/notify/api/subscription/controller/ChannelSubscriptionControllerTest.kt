@@ -1,8 +1,9 @@
 package com.notify.api.subscription.controller
 
+import com.notify.NotificationApplicationTest
 import com.notify.api.subscription.domain.RedditChannelInfo
 import com.notify.api.subscription.service.ChannelSubscriptionService
-import com.notify.it.AbstractTest
+import com.notify.api.util.mapToJson
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.verify
@@ -15,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.RequestBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
-class ChannelSubscriptionControllerTest : AbstractTest() {
+class ChannelSubscriptionControllerTest : NotificationApplicationTest() {
 
     @Autowired
     private var mockMvc: MockMvc? = null
@@ -27,7 +28,7 @@ class ChannelSubscriptionControllerTest : AbstractTest() {
     fun shouldAddChannelForUser() {
 
         val redditChannelInfo = getTestData()
-        val requestData = this.mapToJson(redditChannelInfo)
+        val requestData = mapToJson(redditChannelInfo)
 
         val requestBuilder: RequestBuilder = MockMvcRequestBuilders
                 .put("/api/subscribe/addChannel")
@@ -44,7 +45,7 @@ class ChannelSubscriptionControllerTest : AbstractTest() {
     fun shouldUpdateChannelForUser() {
 
         val redditChannelInfo = getTestData()
-        val requestData = this.mapToJson(redditChannelInfo)
+        val requestData = mapToJson(redditChannelInfo)
 
         val requestBuilder: RequestBuilder = MockMvcRequestBuilders.put("/api/subscribe/updateChannel")
                 .accept(MediaType.APPLICATION_JSON).content(requestData!!)
@@ -56,7 +57,7 @@ class ChannelSubscriptionControllerTest : AbstractTest() {
         verify(service, Times(1))?.updateChannelSubscriptionForUser(redditChannelInfo)
     }
 
-    fun getTestData() = RedditChannelInfo(
+    private fun getTestData() = RedditChannelInfo(
             "dd178821-15c6-45c2-9b97-7df4d1ce73d1",
             "technology"
     )

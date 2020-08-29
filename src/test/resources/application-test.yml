@@ -4,6 +4,6 @@ LIB_MNGMT_ENV: test
 #Database
 db:
   url: jdbc:postgresql://localhost:${postgres.post}/notification
-  username: notification
-  password: secret
+  username: test
+  password: password
   connectionTimeout: 2_000

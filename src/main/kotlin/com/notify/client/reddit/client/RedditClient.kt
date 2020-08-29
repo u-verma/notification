@@ -20,10 +20,10 @@ class RedditClient(
 ) : RedditClientService {
     private val logger = LoggerFactory.getLogger(RedditClient::class.java)
 
-    override fun fetchSubRedditPost(channelMapping: Map<ChannelId, RedditChannel>): Map<ChannelId, List<RedditPost>> {
+    override fun fetchSubRedditPost(channelUrlMap: Map<ChannelId, RedditChannel>): Map<ChannelId, List<RedditPost>> {
         val submittedTask = ArrayList<Future<RedditData>>()
         val redditPostMapping = HashMap<ChannelId, List<RedditPost>>()
-        channelMapping.forEach { (redditId, redditEndPointUrl) ->
+        channelUrlMap.forEach { (redditId, redditEndPointUrl) ->
             val task = SubRedditContentFetchTask(httpClient, redditId, redditEndPointUrl)
             submittedTask.add(completionService.submit(task))
         }

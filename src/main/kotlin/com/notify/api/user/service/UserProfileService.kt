@@ -24,7 +24,6 @@ class UserProfileService(
         userProfileRepository.fetchByEmailId(emailId)
                 .map { record: UserProfileRecord ->
                     val userProfile = record.toUserProfile()
-                    userProfile
                     userDetailsResponse = UserDetailsResponse(
                             userProfile.userId.value.toString(),
                             userProfile.emailId.value,

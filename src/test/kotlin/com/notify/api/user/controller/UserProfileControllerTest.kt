@@ -1,10 +1,12 @@
 package com.notify.api.user.controller
 
+import com.notify.NotificationApplicationTest
 import com.notify.api.user.domain.UserDetailsResponse
 import com.notify.api.user.domain.UserInformation
 import com.notify.api.user.service.UserProfileService
+import com.notify.api.util.mapToJson
 import com.notify.common.NotificationStatus
-import com.notify.it.AbstractTest
+import com.notify.it.IntegrationTest
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
@@ -18,7 +20,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.RequestBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
-class UserProfileControllerTest : AbstractTest() {
+class UserProfileControllerTest : NotificationApplicationTest() {
     @Autowired
     private var mockMvc: MockMvc? = null
 
@@ -35,7 +37,7 @@ class UserProfileControllerTest : AbstractTest() {
                 NotificationStatus.SUBSCRIBED
         )
 
-        val requestData = this.mapToJson(userInfo)
+        val requestData = mapToJson(userInfo)
 
         val requestBuilder: RequestBuilder = MockMvcRequestBuilders
                 .put("/api/user/create")
